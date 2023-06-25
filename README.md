@@ -3,9 +3,7 @@
 | :exclamation: Don't commit changes to upstream files: |
 |-------------------------------------------------------|
 | - `README.md`                                         |
-| - `syllabus.pdf`                                      |
 | - `assignments` directory                             |
-| - `classes` directory                                 |
 | - `project` directory                                 |
 
 
