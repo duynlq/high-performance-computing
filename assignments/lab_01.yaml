@@ -1,0 +1,13 @@
+spack:
+  config:
+    install_missing_compilers: true
+  view: true 
+  definitions:
+  - compilers: [gcc@12.2.0]
+  - packages: [openblas threads=openmp, python@3.10.8, py-numpy+blas+lapack]
+  - targets: [target=zen3]
+  specs:
+  - matrix:
+    - [$%compilers]
+    - [$packages]
+    - [$targets]
