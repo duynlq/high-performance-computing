@@ -1,0 +1,42 @@
+spack:
+  definitions:
+  - compilers: [gcc@12.1.0]
+  - packages:
+    - r@4.1.3 +X +external-lapack
+    - openblas@0.3.20 threads=openmp
+  - targets: [target=broadwell]
+  specs:
+  - python@3.8.12 target=broadwell
+  - py-numpy+blas+lapack
+  - intel-oneapi-mkl
+  concretization: together
+   config:
+    install_missing_compilers: true
+  view: true
+  compilers:
+  - compiler:
+      spec: gcc@4.8.5
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      flags: {}
+      operating_system: centos7
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []
+  container:
+    format: docker
+    images:
+      os: ubuntu:20.04
+      spack:
+        ref: v0.17.2
+    os_packages:
+      final:
+      - libgfortran5
+      - libgomp1
+    extra_instructions:
+      final: |
+        RUN cd /opt/view/bin; find . -xtype l -exec sh -c 'ln -f -s $(basename $(readlink $0)) $(basename $0)' {} \;
