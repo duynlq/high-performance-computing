@@ -1,3 +1,7 @@
+CC = gcc
+CFLAGS = -O2 -std=c11 -Wall -pg
+LDFLAGS = -pg -lm
+
 all: scatter.png
 
 clean:
